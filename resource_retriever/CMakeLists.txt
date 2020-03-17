@@ -33,10 +33,10 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "RESOURCE_RETRIEVER_BUILDING_
 
 # specific order: dependents before dependencies
 ament_export_include_directories(include)
-ament_export_interfaces(${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_interfaces(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 
-ament_export_dependencies(ament_index_cpp)
-ament_export_dependencies(libcurl_vendor)
+#ament_export_dependencies(ament_index_cpp)
+#ament_export_dependencies(libcurl_vendor)
 
 if(BUILD_TESTING)
   # TODO(wjwwood): add ament linters
@@ -47,7 +47,7 @@ endif()
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}
+  EXPORT export_${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
